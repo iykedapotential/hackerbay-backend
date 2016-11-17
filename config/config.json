@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": "root",
+    "password": "gospel1988",
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "",
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "staging": {
+    "username": "root",
+    "password": "",
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "",
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
