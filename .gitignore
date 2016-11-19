@@ -38,3 +38,6 @@ jspm_packages
 
 # IDE generated files
 .idea
+
+# Optional Environmental Variables
+.env

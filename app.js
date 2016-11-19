@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var cors = require('cors');
+var dotenv = require('dotenv');
 
 var response = require('./services/response');
 var log = require('./services/logger');
@@ -31,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator());
 app.use('/', routes);
 app.use('/users', users);
+
+dotenv.load({path:'.env'});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
