@@ -1,0 +1,224 @@
+swagger: '2.0'
+info:
+  title: HackerBay Interview Challenge (Backend)
+  description: Application Programming Interface specification for HackerBay Interview Challenge (Backend) v1.0. `ENDPOINT:localhost:3000`
+  version: 1.0.0
+  termsOfService: http://comingsoon/terms/
+  contact:
+    name: Ikedieze Onyeforo
+    email: iykedapotential@gmail.com
+host: localhost:3000
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+  - application/x-www-form-urlencoded
+produces:
+  - application/json
+  - text/html
+paths:
+  /login:
+    post:
+      summary: mock user login and authentication
+      description: |
+        Will Authenticate a mock username and password and returns an access token. The access token would be passed in the headers as x-access-token
+        for subsequent requests.
+      parameters:
+        - name: username
+          in: formData
+          description: Username of the user
+          required: true
+          type: string
+          format: email
+        - name: password
+          in: formData
+          description: Password of the user
+          required: true
+          type: string
+          format: password
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: The signed jsonwebtoken.
+          schema:
+            $ref: '#/definitions/Ok'
+        '404':
+          description: Not found.
+          schema:
+            $ref: '#/definitions/404'
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: '#/definitions/403'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: '#/definitions/400'
+        '500':
+          description: Server Error.
+          schema:
+            $ref: '#/definitions/500'
+        'default':
+          description: Request Failed.
+          schema:
+            $ref: '#/definitions/Fail'
+  /patch/json:
+    post:
+      summary: Authenticate a user and returns an access token
+      description: |
+        Will Authenticate a user and returns an access token. The access token would be passed in the headers as x-access-token
+        for subsequent requests.
+        This endpoint also accepts get and post format of the parameters.
+      parameters:
+        - name: json
+          in: formData
+          description: the email address of the user
+          required: true
+          type: object
+        - name: patch
+          in: formData
+          description: the password of the user
+          required: true
+          type: object
+      tags:
+        - JSON Patch
+      responses:
+        '200':
+          description: The newly created user or an ok response.
+          schema:
+            $ref: '#/definitions/Ok'
+        '404':
+          description: User not found.
+          schema:
+            $ref: '#/definitions/404'
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: '#/definitions/403'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: '#/definitions/400'
+        '500':
+          description: Server Error.
+          schema:
+            $ref: '#/definitions/500'
+        'default':
+          description: Request Failed.
+          schema:
+            $ref: '#/definitions/Fail'
+  /image/thumbnail:
+      post:
+        summary: Generates a thumbnail of an Image
+        description: |
+          Will generate a thumbnail of an Image.
+        parameters:
+          - name: image_url
+            in: formData
+            description: The public URL of the image
+            required: false
+            type: string
+        tags:
+          - Image Thumbnail
+        responses:
+          '200':
+            description: A URL to the thumbnail image.
+            schema:
+              $ref: '#/definitions/Ok'
+          '404':
+            description: Not found.
+            schema:
+              $ref: '#/definitions/404'
+          '403':
+            description: Forbidden.
+            schema:
+              $ref: '#/definitions/403'
+          '400':
+            description: Bad Request.
+            schema:
+              $ref: '#/definitions/400'
+          '500':
+            description: Server Error.
+            schema:
+              $ref: '#/definitions/500'
+          'default':
+            description: Request Failed.
+            schema:
+              $ref: '#/definitions/Fail'
+# complex objects have schema definitions
+definitions:
+  404:
+    type: object
+    properties:
+      status:
+        type: string
+        description: This will be error
+      message:
+        type: string
+      code:
+        type: string
+      data:
+        type: object
+  403:
+    type: object
+    properties:
+      status:
+        type: string
+        description: This will be error
+      message:
+        type: string
+      code:
+        type: string
+      data:
+        type: object
+  500:
+    type: object
+    properties:
+      status:
+        type: string
+        description: This will be error
+      message:
+        type: string
+      code:
+        type: string
+      data:
+        type: object
+  400:
+    type: object
+    properties:
+      status:
+        type: string
+        description: This will be error
+      message:
+        type: string
+      code:
+        type: string
+      data:
+        type: object
+  ErrorResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        description: This will be fail
+      data:
+        type: object
+  Fail:
+    type: object
+    properties:
+      status:
+        type: string
+        description: This will be fail
+      data:
+        type: object
+  Ok:
+    type: object
+    properties:
+      status:
+        type: string
+        description: This will be success
+      data:
+        type: object
+  
