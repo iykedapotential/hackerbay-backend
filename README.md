@@ -5,7 +5,7 @@ A simple stateless microservice in Nodejs with the following functionalities -
 - JSON patching
 - Image Thumbnail Generation
 
-# Getting Started
+## Getting Started
 
 clone the repository
 ```sh

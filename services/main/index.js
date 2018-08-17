@@ -9,6 +9,13 @@ var log = require('../../services/logger')
 
 module.exports = {
 
+  /**
+    * User Authentication
+    * 
+    * @param data Information about the user.
+    * @param data.username The username of the user.
+    * @param data.password The password of the user.
+   */
   auth: function (data) {
     var d = q.defer()
     q.fcall(() => {
@@ -30,6 +37,13 @@ module.exports = {
     return d.promise
   },
 
+  /**
+    * Patch JSON
+    * 
+    * @param data Request from the user.
+    * @param data.json The input json object.
+    * @param data.patch The json patch to be used.
+   */
   patchJson: function (data) {
     var d = q.defer()
     q.fcall(() => {
@@ -48,6 +62,11 @@ module.exports = {
     return d.promise
   },
 
+  /**
+    * Generate Image Thumbnail
+    * 
+    * @param {string} imgpath  - A public image URL.
+   */
   generateThumb: function (imgpath) {
     var d = q.defer()
     q.fcall(() => {
